@@ -40,6 +40,6 @@ jobs:
         uses: akevalion/PharoTestsAction@v1
         with:
           removes-repo: 'Roassal, Numeric'
-          baseline: 'Roassal3Exporters'
+          baseline: 'RoassalExporters'
           group: 'default'
-          tests: 'Roassal3-Exporters'
+          tests: 'Roassal-Exporters'

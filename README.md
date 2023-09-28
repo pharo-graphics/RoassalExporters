@@ -1,18 +1,18 @@
-# Roassal3Exporter
-[![CI](https://github.com/ObjectProfile/Roassal3Exporters/actions/workflows/runTest.yml/badge.svg)](https://github.com/ObjectProfile/Roassal3Exporters/actions/workflows/runTest.yml)
+# RoassalExporter
+[![CI](https://github.com/pharo-graphics/RoassalExporters/actions/workflows/runTest.yml/badge.svg)](https://github.com/pharo-graphics/RoassalExporters/actions/workflows/runTest.yml)
 
 <!-- 
-[![.github/workflows/main.yml](https://github.com/ObjectProfile/Roassal3Exporters/workflows/CI/badge.svg)](https://github.com/ObjectProfile/Roassal3Exporters/actions)-->
+[![.github/workflows/main.yml](https://github.com/pharo-graphics/RoassalExporters/workflows/CI/badge.svg)](https://github.com/pharo-graphics/RoassalExporters/actions)-->
 
-Exporters for [Roassal3](https://github.com/ObjectProfile/Roassal3).
+Exporters for [Roassal](https://github.com/pharo-graphics/Roassal).
 
 
 Execute the following code snippet in a Playground:
 
 ```Smalltalk
 Metacello new
-    baseline: 'Roassal3Exporters';
-    repository: 'github://ObjectProfile/Roassal3Exporters';
+    baseline: 'RoassalExporters';
+    repository: 'github://pharo-graphics/RoassalExporters';
     load.
 ```
 
@@ -63,8 +63,8 @@ You can export your animations in a video. Load this baseline to load its depend
 
 ```Smalltalk
 Metacello new
-    baseline: 'Roassal3Exporters';
-    repository: 'github://ObjectProfile/Roassal3Exporters';
+    baseline: 'RoassalExporters';
+    repository: 'github://pharo-graphics/RoassalExporters';
     load: 'Video'.
 ```
 
@@ -112,12 +112,12 @@ c clearBackground: false.
 
 c videoExporter
 	duration: 2 seconds;
-	fileName: 'Roassal3Demo';
+	fileName: 'RoassalDemo';
 	export
-"result will be Roassal3Demo.mp4"
+"result will be RoassalDemo.mp4"
 ```
 
-<a href="https://vimeo.com/429861918" target="_blank" title="Roassal3 video demo - Click to Watch!">
+<a href="https://vimeo.com/429861918" target="_blank" title="Roassal video demo - Click to Watch!">
 <img src="https://user-images.githubusercontent.com/10532890/84852814-c695a680-b02b-11ea-8070-3396c0b8931e.png" width="400">
 </a>
 
@@ -129,9 +129,9 @@ c color: Color transparent.
 c videoExporter
 	duration: 2 seconds;
 	transparent;
-	fileName: 'Roassal3Demo';
+	fileName: 'RoassalDemo';
 	export
-"result will be Roassal3Demo.mov"
+"result will be RoassalDemo.mov"
 ```
 
 Windows users can not use the video exporter, because it depends on OSSubProcess and that project does not run well in windows, let us know if this is important to you to work on that.
@@ -142,8 +142,8 @@ You can export a canvas to an html 3D basic exporter with AFrame <a href="https:
 
 ```Smalltalk
 Metacello new
-    baseline: 'Roassal3Exporters';
-    repository: 'github://ObjectProfile/Roassal3Exporters';
+    baseline: 'RoassalExporters';
+    repository: 'github://pharo-graphics/RoassalExporters';
     load: 'AFrame'.
 ```
 
