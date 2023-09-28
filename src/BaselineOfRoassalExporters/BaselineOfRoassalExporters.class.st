@@ -41,7 +41,7 @@ BaselineOfRoassalExporters >> baseline: spec [
 				package: #'Roassal-Exporters-Tests';
 				package: #'Roassal-Exporters-Video' with: [spec requires: #('OSSubprocess') ];
 				package: #'Roassal-Exporters-AFrame';
-				package: 'Roassal-Exporters-AFrame-Examples';
+				package: #'Roassal-Exporters-AFrame-Examples';
 				package: #'Roassal-Exporters-AFrame-Tests'.
 
 			spec
