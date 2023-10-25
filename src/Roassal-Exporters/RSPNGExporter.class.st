@@ -2,17 +2,19 @@
 I represent the exporter for Roassal shapes into a .png file
 "
 Class {
-	#name : #RSPNGExporter,
-	#superclass : #RSRoassalExporter,
-	#category : #'Roassal-Exporters-Core'
+	#name : 'RSPNGExporter',
+	#superclass : 'RSRoassalExporter',
+	#category : 'Roassal-Exporters-Core',
+	#package : 'Roassal-Exporters',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSPNGExporter class >> extension [
 	^ 'png'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 RSPNGExporter >> exportToFile: file [
 	| morph |
 	self removeIfNecessary: file.

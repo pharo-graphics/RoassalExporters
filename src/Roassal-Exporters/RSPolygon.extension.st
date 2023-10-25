@@ -1,6 +1,6 @@
-Extension { #name : #RSPolygon }
+Extension { #name : 'RSPolygon' }
 
-{ #category : #'*Roassal-Exporters' }
+{ #category : '*Roassal-Exporters' }
 RSPolygon >> writeSVG2On: aRSSVG2Exporter [
 | s pt |
 	s := aRSSVG2Exporter stream.
@@ -8,7 +8,7 @@ RSPolygon >> writeSVG2On: aRSSVG2Exporter [
 	s << '<polyline points="'.
 	self points do: [ :p | | np |
 		np := pt transform: p.
-		s 
+		s
 			<< np x asSVGString;
 			<< ',';
 			<< np y asSVGString;
@@ -16,5 +16,4 @@ RSPolygon >> writeSVG2On: aRSSVG2Exporter [
 	s << '" '.
 	aRSSVG2Exporter writeSVGStyleFor: self.
 	s << '/>'; crlf
-		
 ]

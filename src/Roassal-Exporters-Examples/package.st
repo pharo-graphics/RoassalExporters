@@ -1,1 +1,1 @@
-Package { #name : #'Roassal-Exporters-Examples' }
+Package { #name : 'Roassal-Exporters-Examples' }

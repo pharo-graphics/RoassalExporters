@@ -13,21 +13,23 @@ RSExporterUsingURL new
  
 "
 Class {
-	#name : #RSExporterUsingURL,
-	#superclass : #RSExporterFontStrategy,
-	#category : #'Roassal-Exporters-Core'
+	#name : 'RSExporterUsingURL',
+	#superclass : 'RSExporterFontStrategy',
+	#category : 'Roassal-Exporters-Core',
+	#package : 'Roassal-Exporters',
+	#tag : 'Core'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 RSExporterUsingURL >> defaultURL [
-	
+
 	^ 'https://fonts.googleapis.com/css2?family='
 ]
 
-{ #category : #export }
+{ #category : 'export' }
 RSExporterUsingURL >> export: collection on: stream [
 
-	collection do: [ :aString | 
+	collection do: [ :aString |
 		| assoc |
 		assoc := dictionary ifNil: [ nil ] ifNotNil: [ dictionary at: aString ifAbsent: [ nil ] ].
 		stream

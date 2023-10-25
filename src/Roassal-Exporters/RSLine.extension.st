@@ -1,7 +1,7 @@
-Extension { #name : #RSLine }
+Extension { #name : 'RSLine' }
 
-{ #category : #'*Roassal-Exporters' }
-RSLine >> writeSVG2On: aRSSVG2Exporter [ 
+{ #category : '*Roassal-Exporters' }
+RSLine >> writeSVG2On: aRSSVG2Exporter [
 	| p1 p2 s pt |
 	pt := aRSSVG2Exporter pathTransform.
 	p1 := pt transform: self startPoint.
@@ -19,5 +19,5 @@ RSLine >> writeSVG2On: aRSSVG2Exporter [
 		<< p2 y asSVGString;
 		<< '" '.
 	aRSSVG2Exporter writeSVGStyleFor: self.
-	s << '/>'; crlf.
+	s << '/>'; crlf
 ]

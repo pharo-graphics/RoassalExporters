@@ -1,7 +1,7 @@
-Extension { #name : #RSCircularShape }
+Extension { #name : 'RSCircularShape' }
 
-{ #category : #'*Roassal-Exporters' }
-RSCircularShape >> writeSVG2On: aRSSVG2Exporter [ 
+{ #category : '*Roassal-Exporters' }
+RSCircularShape >> writeSVG2On: aRSSVG2Exporter [
 	| rect pos ext s |
 	rect := self baseRectangle.
 	pos := rect floatCenter.
@@ -16,5 +16,5 @@ RSCircularShape >> writeSVG2On: aRSSVG2Exporter [
 		<< '" '.
 	aRSSVG2Exporter writeSVGStyleFor: self.
 	aRSSVG2Exporter writeMatrix: aRSSVG2Exporter pathTransform.
-	s << '/>'; crlf.
+	s << '/>'; crlf
 ]

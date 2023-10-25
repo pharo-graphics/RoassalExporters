@@ -1,6 +1,6 @@
-Extension { #name : #RSPolyline }
+Extension { #name : 'RSPolyline' }
 
-{ #category : #'*Roassal-Exporters' }
+{ #category : '*Roassal-Exporters' }
 RSPolyline >> writeSVG2On: aRSSVG2Exporter [
 	| s pt |
 	s := aRSSVG2Exporter stream.
@@ -13,5 +13,4 @@ RSPolyline >> writeSVG2On: aRSSVG2Exporter [
 	s << '" '.
 	aRSSVG2Exporter writeSVGStyleFor: self.
 	s << '/>'; crlf
-		
 ]

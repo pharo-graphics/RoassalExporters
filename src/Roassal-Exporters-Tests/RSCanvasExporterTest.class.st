@@ -1,20 +1,21 @@
 Class {
-	#name : #RSCanvasExporterTest,
-	#superclass : #TestCase,
+	#name : 'RSCanvasExporterTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'canvas',
 		'file'
 	],
-	#category : #'Roassal-Exporters-Tests'
+	#category : 'Roassal-Exporters-Tests',
+	#package : 'Roassal-Exporters-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 RSCanvasExporterTest >> setUp [
 	super setUp.
 	canvas := RSCanvas new
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RSCanvasExporterTest >> tearDown [
 	file isString ifTrue: [ ^ self ].
 	file ifNotNil: [ file delete ].
@@ -22,16 +23,16 @@ RSCanvasExporterTest >> tearDown [
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RSCanvasExporterTest >> testBasicPDF01 [
 	file := canvas exportToPDF.
 	self assert: file isString.
 	self assert: (file endsWith: '.pdf').
 	file := file asFileReference.
-	self assert: file exists.
+	self assert: file exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RSCanvasExporterTest >> testBasicPDF02 [
 	file := canvas pdfExporter
 		fileName: 'foo';
@@ -39,10 +40,10 @@ RSCanvasExporterTest >> testBasicPDF02 [
 	self assert: file isString.
 	self assert: (file endsWith: '.pdf').
 	file := file asFileReference.
-	self assert: file exists.
+	self assert: file exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RSCanvasExporterTest >> testBasicPDF03 [
 	file := canvas pdfExporter
 		fileName: 'foo.pdf';
@@ -50,5 +51,5 @@ RSCanvasExporterTest >> testBasicPDF03 [
 	self assert: file isString.
 	self assert: (file endsWith: 'foo.pdf').
 	file := file asFileReference.
-	self assert: file exists.
+	self assert: file exists
 ]

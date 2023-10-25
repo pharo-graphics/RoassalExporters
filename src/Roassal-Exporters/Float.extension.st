@@ -1,6 +1,6 @@
-Extension { #name : #Float }
+Extension { #name : 'Float' }
 
-{ #category : #'*Roassal-Exporters' }
+{ #category : '*Roassal-Exporters' }
 Float >> asSVGString [
 	| i |
 	i := self asInteger.

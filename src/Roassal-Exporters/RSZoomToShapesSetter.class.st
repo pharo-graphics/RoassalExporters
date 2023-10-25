@@ -2,17 +2,19 @@
 TODO
 "
 Class {
-	#name : #RSZoomToShapesSetter,
-	#superclass : #RSAbstractCamSetter,
-	#category : #'Roassal-Exporters-Setters'
+	#name : 'RSZoomToShapesSetter',
+	#superclass : 'RSAbstractCamSetter',
+	#category : 'Roassal-Exporters-Setters',
+	#package : 'Roassal-Exporters',
+	#tag : 'Setters'
 }
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 RSZoomToShapesSetter >> extent [
 	^ canvas encompassingRectangle extent
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 RSZoomToShapesSetter >> setCamera [
 
 	| rect |

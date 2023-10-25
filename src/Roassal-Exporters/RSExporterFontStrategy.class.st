@@ -16,15 +16,17 @@ Public API and Key Messages
  
 "
 Class {
-	#name : #RSExporterFontStrategy,
-	#superclass : #Object,
+	#name : 'RSExporterFontStrategy',
+	#superclass : 'Object',
 	#instVars : [
 		'dictionary'
 	],
-	#category : #'Roassal-Exporters-Core'
+	#category : 'Roassal-Exporters-Core',
+	#package : 'Roassal-Exporters',
+	#tag : 'Core'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 RSExporterFontStrategy >> addCustomFont: string given: association [
 
 	self assert: (string isString and: [ string notEmpty ]).
@@ -33,16 +35,16 @@ RSExporterFontStrategy >> addCustomFont: string given: association [
 	dictionary at: string put: association
 ]
 
-{ #category : #export }
+{ #category : 'export' }
 RSExporterFontStrategy >> export: collection on: stream [
 
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSExporterFontStrategy >> fontName: string [
 
-	^ dictionary ifNil: [ string ] ifNotNil: [ 
+	^ dictionary ifNil: [ string ] ifNotNil: [
 		dictionary
 			at: string
 			ifPresent: [ :assoc | assoc key ]

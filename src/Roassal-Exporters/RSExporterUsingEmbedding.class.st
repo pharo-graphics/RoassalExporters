@@ -14,18 +14,20 @@ RSExporterUsingEmbedding new
 
 "
 Class {
-	#name : #RSExporterUsingEmbedding,
-	#superclass : #RSExporterFontStrategy,
-	#category : #'Roassal-Exporters-Core'
+	#name : 'RSExporterUsingEmbedding',
+	#superclass : 'RSExporterFontStrategy',
+	#category : 'Roassal-Exporters-Core',
+	#package : 'Roassal-Exporters',
+	#tag : 'Core'
 }
 
-{ #category : #export }
+{ #category : 'export' }
 RSExporterUsingEmbedding >> export: collection on: stream [
 
 	self assert: (dictionary isDictionary and: [ dictionary isNotEmpty ]).
 	self assert: (dictionary keys includesAll: collection).
-	collection do: [ :item | 
+	collection do: [ :item |
 		stream crlf.
-		(dictionary at: item) value asFileReference readStreamDo: [ :fileStream | 
+		(dictionary at: item) value asFileReference readStreamDo: [ :fileStream |
 			stream nextPutAll: fileStream contents ] ]
 ]

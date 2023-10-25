@@ -1,6 +1,6 @@
-Extension { #name : #RSBoundingShape }
+Extension { #name : 'RSBoundingShape' }
 
-{ #category : #'*Roassal-Exporters' }
+{ #category : '*Roassal-Exporters' }
 RSBoundingShape >> writeSVG2On: aRSSVG2Exporter [
 	| rect pos ext s |
 	rect := self baseRectangle.
@@ -20,5 +20,5 @@ RSBoundingShape >> writeSVG2On: aRSSVG2Exporter [
 		<< '" '.
 	aRSSVG2Exporter writeSVGStyleFor: self.
 	aRSSVG2Exporter writeMatrix: aRSSVG2Exporter pathTransform.
-	s << '/>'; crlf.
+	s << '/>'; crlf
 ]

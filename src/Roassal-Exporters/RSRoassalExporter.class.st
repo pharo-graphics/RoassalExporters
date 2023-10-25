@@ -2,23 +2,25 @@
 I represent the abstract class to export Roassal shapes in different formats.
 "
 Class {
-	#name : #RSRoassalExporter,
-	#superclass : #Object,
+	#name : 'RSRoassalExporter',
+	#superclass : 'Object',
 	#instVars : [
 		'canvas',
 		'fileName',
 		'showFixedShapes',
 		'cameraSetter'
 	],
-	#category : #'Roassal-Exporters-Core'
+	#category : 'Roassal-Exporters-Core',
+	#package : 'Roassal-Exporters',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSRoassalExporter class >> extension [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSRoassalExporter >> baseName [
 	| file ext |
 	file := self fileName.
@@ -29,41 +31,41 @@ RSRoassalExporter >> baseName [
 	^ file
 ]
 
-{ #category : #accessing }
-RSRoassalExporter >> cameraSetter [ 
+{ #category : 'accessing' }
+RSRoassalExporter >> cameraSetter [
 	^ cameraSetter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSRoassalExporter >> cameraSetter: aRSCameraSetter [
 	cameraSetter := aRSCameraSetter.
-	cameraSetter canvas: canvas.
+	cameraSetter canvas: canvas
 ]
 
-{ #category : #accessing }
-RSRoassalExporter >> canvas: aRSCanvas [ 
+{ #category : 'accessing' }
+RSRoassalExporter >> canvas: aRSCanvas [
 	canvas := aRSCanvas.
 	cameraSetter canvas: canvas
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSRoassalExporter >> createFile [
 	^ self baseName asFileReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSRoassalExporter >> defaultFileName [
 	^ Time microsecondClockValue asString
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 RSRoassalExporter >> export [
 
 	| file old new |
 	canvas ifNil: [ self error: 'canvas can not be nil' ].
 	file := self createFile.
 	old := canvas fixedShapes.
-	new := showFixedShapes 
+	new := showFixedShapes
 		ifTrue: [ canvas fixedShapes ]
 		ifFalse: [ RSGroup new ].
 	canvas fixedShapes: new.
@@ -71,44 +73,44 @@ RSRoassalExporter >> export [
 	^ file pathString
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 RSRoassalExporter >> exportToFile: file [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSRoassalExporter >> extension [
 	^ self class extension
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSRoassalExporter >> fileName [
 	^ fileName ifNil: [ fileName := self defaultFileName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSRoassalExporter >> fileName: aString [
 	fileName := aString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 RSRoassalExporter >> initialize [
 	super initialize.
 	self withoutFixedShapes.
-	self zoomToCurrentCamera.
+	self zoomToCurrentCamera
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSRoassalExporter >> morph [
 	^ canvas morph ifNil: [ canvas createMorph ]
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 RSRoassalExporter >> noDoubleDraw [
 	self cameraSetter noDoubleDraw
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 RSRoassalExporter >> noFixedShapes [
 
 	self deprecated: 'Use withoutFixedShapes instead'
@@ -116,32 +118,32 @@ RSRoassalExporter >> noFixedShapes [
 	self withoutFixedShapes
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 RSRoassalExporter >> removeIfNecessary: aFileName [
 	aFileName exists ifTrue: [ aFileName delete ]
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 RSRoassalExporter >> useDoubleDraw [
 	self cameraSetter useDoubleDraw
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 RSRoassalExporter >> withFixedShapes [
 	showFixedShapes := true
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 RSRoassalExporter >> withoutFixedShapes [
 	showFixedShapes := false
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 RSRoassalExporter >> zoomToCurrentCamera [
 	self cameraSetter: RSCamSetter new
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 RSRoassalExporter >> zoomToShapes [
 	self cameraSetter: RSZoomToShapesSetter new
 ]

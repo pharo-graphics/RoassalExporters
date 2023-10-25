@@ -1,33 +1,34 @@
 Class {
-	#name : #RSExporterTest,
-	#superclass : #ParametrizedTestCase,
+	#name : 'RSExporterTest',
+	#superclass : 'ParametrizedTestCase',
 	#instVars : [
 		'exporterClass'
 	],
-	#category : #'Roassal-Exporters-Tests'
+	#category : 'Roassal-Exporters-Tests',
+	#package : 'Roassal-Exporters-Tests'
 }
 
-{ #category : #'building suites' }
+{ #category : 'building suites' }
 RSExporterTest class >> testParameters [
 	| m classesToConsider |
 	m := ParametrizedTestMatrix new.
-	classesToConsider := RSRoassalExporter allSubclasses 
+	classesToConsider := RSRoassalExporter allSubclasses
 		reject: [ :c | c hasAbstractMethods ].
 	classesToConsider do: [ :cls | m addCase: {(#exporterClass -> cls)} ].
 	^ m
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSExporterTest >> exporterClass [
 	^ exporterClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSExporterTest >> exporterClass: aClass [
 	exporterClass := aClass
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RSExporterTest >> sample [
 	| c menMeans womenMeans lb |
 	c := RSCompositeChart new.
@@ -43,14 +44,14 @@ RSExporterTest >> sample [
 	c build.
 	lb := RSLegend new.
 	lb layout horizontal.
-	#(Men Women) doWithIndex: [ :lbl :index | 
+	#(Men Women) doWithIndex: [ :lbl :index |
 		lb text: lbl withBoxColor: (c plots at:index) computeColor ].
 	lb container: c canvas.
 	lb build.
 	^ c canvas
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RSExporterTest >> testExport01 [
 
 	| canvas file exporter |
@@ -74,7 +75,7 @@ RSExporterTest >> testExport01 [
 	file delete
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RSExporterTest >> testExport1080p [
 
 	| exporter canvas |
@@ -87,7 +88,7 @@ RSExporterTest >> testExport1080p [
 		zoomToShapes
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RSExporterTest >> testExportError [
 	self should: [ self exporterClass new export ] raise: Error
 ]

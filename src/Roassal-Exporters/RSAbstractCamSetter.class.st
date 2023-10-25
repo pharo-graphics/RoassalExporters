@@ -2,72 +2,74 @@
 TODO
 "
 Class {
-	#name : #RSAbstractCamSetter,
-	#superclass : #Object,
+	#name : 'RSAbstractCamSetter',
+	#superclass : 'Object',
 	#instVars : [
 		'canvas',
 		'shouldUseDoubleDraw'
 	],
-	#category : #'Roassal-Exporters-Setters'
+	#category : 'Roassal-Exporters-Setters',
+	#package : 'Roassal-Exporters',
+	#tag : 'Setters'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSAbstractCamSetter >> canvas [
 	^ canvas
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSAbstractCamSetter >> canvas: aRSCanvas [
 	canvas := aRSCanvas
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 RSAbstractCamSetter >> extent [
 	^ canvas extent
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 RSAbstractCamSetter >> initialize [
 	super initialize.
 	self useDoubleDraw
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 RSAbstractCamSetter >> noDoubleDraw [
 	shouldUseDoubleDraw := false
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 RSAbstractCamSetter >> set: aBlock [
 	| camera |
 	self setCanvasCamera.
 	camera := canvas camera copy.
 	camera matrix: canvas camera matrix copy.
-	self shouldUseDoubleDraw 
+	self shouldUseDoubleDraw
 		ifTrue: [ canvas morph drawOnMockCanvas ].
 	self setCamera.
 	aBlock value.
-	canvas camera: camera.
+	canvas camera: camera
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 RSAbstractCamSetter >> setCamera [
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 RSAbstractCamSetter >> setCanvasCamera [
 	| extent morph |
 	extent := self extent.
 	morph := canvas morph ifNil: [ canvas createMorph ].
-	morph extent = extent ifFalse: [ morph extent: extent ].
+	morph extent = extent ifFalse: [ morph extent: extent ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 RSAbstractCamSetter >> shouldUseDoubleDraw [
 	^ shouldUseDoubleDraw
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 RSAbstractCamSetter >> useDoubleDraw [
-	shouldUseDoubleDraw := true.
+	shouldUseDoubleDraw := true
 ]

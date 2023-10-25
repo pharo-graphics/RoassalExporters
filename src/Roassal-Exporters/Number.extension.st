@@ -1,6 +1,6 @@
-Extension { #name : #Number }
+Extension { #name : 'Number' }
 
-{ #category : #'*Roassal-Exporters' }
+{ #category : '*Roassal-Exporters' }
 Number >> asSVGString [
 	^ self asString
 ]

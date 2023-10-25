@@ -2,12 +2,13 @@
 I have examples
 "
 Class {
-	#name : #RSExporterExamples,
-	#superclass : #Object,
-	#category : #'Roassal-Exporters-Examples'
+	#name : 'RSExporterExamples',
+	#superclass : 'Object',
+	#category : 'Roassal-Exporters-Examples',
+	#package : 'Roassal-Exporters-Examples'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RSExporterExamples >> canvas [
 	| chart |
 	chart := RSChartExample new example11BarplotCombinedWithLine.
@@ -15,15 +16,14 @@ RSExporterExamples >> canvas [
 	^ chart canvas
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example01PDFExport [
 	"should produce a pdf with resolution 500x500"
 	<script: 'self new example01PDFExport'>
 	self openFile: self canvas exportToPDF asFileReference
-	
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example02PDFExport [
 	"should produce a pdf with resolution 500x500
 	and no fixed shapes"
@@ -32,10 +32,9 @@ RSExporterExamples >> example02PDFExport [
 		noFixedShapes;
 		fileName: 'test';
 		export) asFileReference
-	
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example03PDFExport [
 	"should produce a pdf with resolution 247@247"
 	<script: 'self new example03PDFExport'>
@@ -43,18 +42,16 @@ RSExporterExamples >> example03PDFExport [
 		zoomToShapes;
 		fileName: 'test';
 		export) asFileReference
-	
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example04SVGExport [
 	"should produce an svg with resolution 500x500"
 	<script: 'self new example04SVGExport'>
 	self openFile: self canvas exportToSVGCairo asFileReference
-	
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example05SVGExport [
 	"should produce an svg with resolution 500x500
 	and no fixed shapes"
@@ -63,10 +60,9 @@ RSExporterExamples >> example05SVGExport [
 		noFixedShapes;
 		fileName: 'test';
 		export) asFileReference
-	
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example06SVGExport [
 	"should produce a pdf with resolution 247@247"
 	<script: 'self new example06SVGExport'>
@@ -76,15 +72,14 @@ RSExporterExamples >> example06SVGExport [
 		export) asFileReference
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example07PNGExport [
 	"should produce a png with resolution 500x500"
 	<script: 'self new example07PNGExport'>
 	self openFile: self canvas exportToPNG asFileReference
-	
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example08PNGExport [
 	"should produce a png with resolution 500x500
 	and no fixed shapes"
@@ -93,10 +88,9 @@ RSExporterExamples >> example08PNGExport [
 		noFixedShapes;
 		fileName: 'test';
 		export) asFileReference
-	
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example09PNGExport [
 	"should produce a png with resolution 247@247"
 	<script: 'self new example09PNGExport'>
@@ -104,10 +98,9 @@ RSExporterExamples >> example09PNGExport [
 		zoomToShapes;
 		fileName: 'test';
 		export) asFileReference
-	
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example11PDFExport [
 	"should produce a pdf with resolution 8.26 inches@ 11.69 inches"
 	<script: 'self new example11PDFExport'>
@@ -128,14 +121,13 @@ RSExporterExamples >> example11PDFExport [
 	"c extent: RSPageExtent letter.
 	c extent: RSPageExtent a4."
 	c extent: (RSPageExtent from: 8.26 inches@ 11.69 inches).
-	
+
 	self openFile: (c pdfExporter
 		fileName: 'test';
 		export) asFileReference
-	
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 RSExporterExamples >> example12SVGRelax [
 	<script: 'self new example12SVGRelax open
 		extent: 2340@1080 *0.5;
@@ -156,7 +148,7 @@ RSExporterExamples >> example12SVGRelax [
 	i2 := (contents indexOf: $" startingAt: i1)-1.
 	svg := RSSVGPath new svgPath: (contents copyFrom: i1 to: i2).
 	file delete.
-	
+
 	visitor := RSBlockSegmentsVisitor new.
 	visitor simplePoints:[ :segment :current |
 		canvas addAll: ((segment pointsWithStart: current) collect: [:p |
@@ -166,12 +158,12 @@ RSExporterExamples >> example12SVGRelax [
 				color: Color black;
 				yourself) ]).
 		].
-		
+
 	svg accept: visitor.
 	frame := 0.
 	perlin := NSPerlinNoise3 new octaves: 5.
 	canvas newAnimation repeat; onStepDo: [ :t |
-		canvas nodes doWithIndex: [ :each :i | 
+		canvas nodes doWithIndex: [ :each :i |
 			| n |
 			n := (perlin noise: (each position + frame)* 0.01)- 0.5.
 			each translateBy: n.
@@ -181,14 +173,12 @@ RSExporterExamples >> example12SVGRelax [
 		].
 	canvas when: RSExtentChangedEvent send: #zoomToFit to: canvas.
 	^ canvas
-
 ]
 
-{ #category : #opening }
-RSExporterExamples >> openFile: aFileReference [ 
+{ #category : 'opening' }
+RSExporterExamples >> openFile: aFileReference [
 	| window |
 	window := StInspector inspect: aFileReference parent.
 	window whenClosedDo: [ aFileReference delete ].
-	self inform: 'File will be deleted when you close the inspector'.
-	
+	self inform: 'File will be deleted when you close the inspector'
 ]

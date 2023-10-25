@@ -2,24 +2,26 @@
 I represent the abstract class to export Roassal shapes, using AthensCairo, in different formats 
 "
 Class {
-	#name : #RSCairoExporter,
-	#superclass : #RSRoassalExporter,
-	#category : #'Roassal-Exporters-Core'
+	#name : 'RSCairoExporter',
+	#superclass : 'RSRoassalExporter',
+	#category : 'Roassal-Exporters-Core',
+	#package : 'Roassal-Exporters',
+	#tag : 'Core'
 }
 
-{ #category : #public }
-RSCairoExporter >> cairoSurfaceClass [ 
+{ #category : 'public' }
+RSCairoExporter >> cairoSurfaceClass [
 	^ self subclassResponsibility
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 RSCairoExporter >> createCairoSurfaceFor: file [
-	^ self cairoSurfaceClass 
+	^ self cairoSurfaceClass
 		extent: cameraSetter extent
 		fileName: file pathString
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 RSCairoExporter >> exportToFile: file [
 	| surface oldSurface morph |
 	self removeIfNecessary: file.
