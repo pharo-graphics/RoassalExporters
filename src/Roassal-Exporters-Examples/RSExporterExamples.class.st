@@ -27,11 +27,12 @@ RSExporterExamples >> example01PDFExport [
 RSExporterExamples >> example02PDFExport [
 	"should produce a pdf with resolution 500x500
 	and no fixed shapes"
+
 	<script: 'self new example02PDFExport'>
 	self openFile: (self canvas pdfExporter
-		noFixedShapes;
-		fileName: 'test';
-		export) asFileReference
+			 withoutFixedShapes;
+			 fileName: 'test';
+			 export) asFileReference
 ]
 
 { #category : 'examples' }
@@ -55,11 +56,12 @@ RSExporterExamples >> example04SVGExport [
 RSExporterExamples >> example05SVGExport [
 	"should produce an svg with resolution 500x500
 	and no fixed shapes"
+
 	<script: 'self new example05SVGExport'>
 	self openFile: (self canvas svgCairoExporter
-		noFixedShapes;
-		fileName: 'test';
-		export) asFileReference
+			 withoutFixedShapes;
+			 fileName: 'test';
+			 export) asFileReference
 ]
 
 { #category : 'examples' }
@@ -83,11 +85,12 @@ RSExporterExamples >> example07PNGExport [
 RSExporterExamples >> example08PNGExport [
 	"should produce a png with resolution 500x500
 	and no fixed shapes"
+
 	<script: 'self new example08PNGExport'>
 	self openFile: (self canvas pngExporter
-		noFixedShapes;
-		fileName: 'test';
-		export) asFileReference
+			 withoutFixedShapes;
+			 fileName: 'test';
+			 export) asFileReference
 ]
 
 { #category : 'examples' }

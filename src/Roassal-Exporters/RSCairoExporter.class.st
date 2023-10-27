@@ -30,7 +30,7 @@ RSCairoExporter >> exportToFile: file [
 	self cameraSetter set: [
 		oldSurface := morph surface.
 		morph surface: surface.
-
+		canvas invalidate.
 		morph drawShapes.
 		surface close.
 
