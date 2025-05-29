@@ -180,8 +180,9 @@ RSExporterExamples >> example12SVGRelax [
 
 { #category : 'opening' }
 RSExporterExamples >> openFile: aFileReference [
+
 	| window |
-	window := StInspectorPresenter inspect: aFileReference parent.
+	window := aFileReference parent inspector.
 	window whenClosedDo: [ aFileReference delete ].
 	self inform: 'File will be deleted when you close the inspector'
 ]
